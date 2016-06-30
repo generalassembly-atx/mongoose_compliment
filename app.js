@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.WDI_COMPLIMENT_DB);
+mongoose.connect(process.env.compliments);
 
 
 app.use('/', routes);
