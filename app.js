@@ -24,6 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 var mongoose = require('mongoose');
 mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
+// var Compliment = require('./models/compliment');
+// var cece = new Compliment({
+//   compliment:"cece",
+// });
+// cece.save();
+// console.log(cece);
+
 
 app.use('/', routes);
 
