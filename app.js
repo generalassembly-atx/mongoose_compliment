@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 var mongoose = require('mongoose');
 mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler
