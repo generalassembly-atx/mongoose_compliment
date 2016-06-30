@@ -19,17 +19,26 @@ router.get('/(:name)?', function(req, res, next) {
 	var color = randomColor();
 
 	// USE MONGOOSE TO GET A RANDOM COMPLIMENT FROM THE DATABASE, THEN RENDER THE VIEW
-
-	var compliment = null; // this line is just here to temporarily prevent an undefined error. You can remove it once you get a real compliment from the DB.
-	res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
+  Compliment.findRandom(function(err, compliment){
+    res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
+  });
 });
 
 /* POST compliment. */
 router.post('/', function(req, res, next) {
-	var newCompliment = req.body.compliment;
-
+	var newCompliment = new Compliment(req.body);
 	// USE MONGOOSE TO SAVE A NEW COMPLIMENT TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
-	res.redirect('/');
+  newCompliment.save(function(err, newCompliment){
+        if (err) console.log(err);
+        res.redirect('/');
+    });
 });
+// router.post('/', function(req, res, next){
+//   var user = new User(req.body);
 
+//   user.save(function(err, user){
+//     if (err) console.log(err);
+//     res.redirect('/users');
+//   });
+// });
 module.exports = router;
