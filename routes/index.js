@@ -29,6 +29,10 @@ router.post('/', function(req, res, next) {
 	var newCompliment = req.body.compliment;
 
 	// USE MONGOOSE TO SAVE A NEW COMPLIMENT TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
+  newCompliment.save(function(err, newCompliment) {
+        if (err) console.log(err);
+        res.send('Compliment created!');
+    });
 	res.redirect('/');
 });
 
