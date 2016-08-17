@@ -1,4 +1,5 @@
 require('dotenv').config({silent: true});
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.WDI_COMPLIMENT_DB);
+
+var Compliment = require ('./models/compliment')
 
 
 app.use('/', routes);
