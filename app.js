@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 var mongoose = require('mongoose');
 mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
-var Compliment = require ('./models/compliment')
 
 
 app.use('/', routes);
