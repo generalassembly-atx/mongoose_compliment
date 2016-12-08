@@ -1,3 +1,4 @@
+
 require('dotenv').config({silent: true});
 var express = require('express');
 var path = require('path');
@@ -23,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.WDI_COMPLIMENT_DB);
+mongoose.connect(process.env.WDI_MONGOOSE_HW);
 
 
 app.use('/', routes);
