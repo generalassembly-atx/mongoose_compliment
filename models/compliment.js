@@ -1,5 +1,5 @@
 // How can we set up the Compliment model to talk to our database?
-// Look at past examples
+// Look at past examples.
 
 // /models/compliment.js
 var mongoose = require('mongoose');

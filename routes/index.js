@@ -18,7 +18,7 @@ router.get('/(:name)?', function(req, res, next) {
 	name = req.params.name || "Friend";
 	var color = randomColor();
 
-	// USE MONGOOSE TO GET A RANDOM COMPLIMENT FROM THE DATABASE, THEN RENDER THE VIEW
+	// USE MONGOOSE TO GET A RANDOM COMPLIMENT FROM THE DATABASE, THEN RENDER THE VIEW.
 	Compliment.find(req.params.name, function(err, result){
 	var compliment = result[Math.floor(Math.random()*result.length)].compliment;
 	res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
