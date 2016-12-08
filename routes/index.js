@@ -24,6 +24,18 @@ router.get('/(:name)?', function(req, res, next) {
 	res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
 });
 
+router.get('/',function(req,res){
+	// Compliment.find({compliment:''},"compliment",function(err,compliment){
+	// 	if(err) console.log(err);
+	// 	console.log("compliment: ",compliment);
+	// });
+	var josh = '';
+	res.render('index',{
+		josh:'awesome',
+		compliment:'hello'
+	});
+});
+
 /* POST compliment. */
 router.post('/', function(req, res, next) {
 	var newCompliment = req.body.compliment;
