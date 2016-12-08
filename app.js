@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 
 // TODO: You will need to set up an environment variable and use the dotenv package
 //mongoose.connect(process.env.WDI_COMPLIMENT_DB);
+mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler.
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
