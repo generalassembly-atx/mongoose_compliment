@@ -10,14 +10,14 @@ var routes = require('./routes/index');
 
 var app = express();
 
-var mongoose = require('mongoose');
 
-// TODO: You will need to set up an environment variable and use the dotenv package
-//mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+var mongoose = require('mongoose');
+mongoose.connect(process.env.WDI_COMPLIMENT_DB);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
