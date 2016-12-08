@@ -20,9 +20,19 @@ router.get('/(:name)?', function(req, res, next) {
 
 	// USE MONGOOSE TO GET A RANDOM COMPLIMENT FROM THE DATABASE, THEN RENDER THE VIEW
 
-	var compliment = null; // this line is just here to temporarily prevent an undefined error. You can remove it once you get a real compliment from the DB.
-	res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
-});
+	Compliment.find({}, '', function(err, results) {
+		if (err) console.log(err);
+		console.log(results);
+		var i = [Math.floor(Math.random()*results.length)];
+		res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: results[i].compliment });
+
+		var allCompliments = results;
+		console.log(allCompliments);
+
+		// var randomCompliment = allCompliments[Math.floor(Math.random()*allCompliments.length)];
+		// console.log(randomCompliment);
+		});
+	});
 
 /* POST compliment. */
 router.post('/', function(req, res, next) {
