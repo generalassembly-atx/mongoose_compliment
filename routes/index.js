@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var Compliment = require('../models/compliment');
@@ -21,7 +22,21 @@ router.get('/(:name)?', function(req, res, next) {
 	// USE MONGOOSE TO GET A RANDOM COMPLIMENT FROM THE DATABASE, THEN RENDER THE VIEW
 
 	var compliment = null; // this line is just here to temporarily prevent an undefined error. You can remove it once you get a real compliment from the DB.
-	res.render('index', { title: 'WDI Emergency Compliment', color: color, name: name, compliment: compliment });
+	Compliment.find({},function(error, response) {
+		if (error) {console.log('Error: ', error)}
+
+		console.log(response);
+
+		var random = randomCompliment(response);
+		compliment = random.compliment;
+
+
+		res.render('index',
+		{ title: 'WDI Emergency Compliment',
+		 color: color,
+		 name: name,
+		 compliment: compliment });
+	});
 });
 
 /* POST compliment. */
@@ -29,7 +44,19 @@ router.post('/', function(req, res, next) {
 	var newCompliment = req.body.compliment;
 
 	// USE MONGOOSE TO SAVE A NEW COMPLIMENT TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
-	res.redirect('/');
+	newCompliment.save(function(error, compliment){
+    if (error){
+      res.send({
+        status : 'Submit Error: ',
+        error : error
+      });
+    }
+    else {
+      console.log('Compliment has been submitted!', compliment);
+      res.redirect('/');
+    }
+  });
 });
+
 
 module.exports = router;
