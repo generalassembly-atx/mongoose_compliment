@@ -32,7 +32,7 @@ Once you've successfully set your credentials in the `.env` file, you should be 
 - Use your Mongo/Mongoose skillz to retrieve a random compliment from the database, and pass it to the view. The view itself has already been created.
 
 #### Step 6: Save a compliment to the database
-- Find the route where the form for creating a compliment is POSTed to. Take the compliment that is sent through that form, and use Mongo to save it to the database. Once that is done successfully, redirect the user to the homepage.
+- Find the route where the form for creating a compliment is 'POST'ed to. Take the compliment that is sent through that form, and use Mongo to save it to the database. Once that is done successfully, redirect the user to the homepage.
 
 
 ## Tips
